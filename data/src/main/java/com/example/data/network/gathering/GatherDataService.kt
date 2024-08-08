@@ -1,11 +1,12 @@
-package com.example.data.network.ip
+package com.example.data.network.gathering
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
 
 
-interface IPService {
+interface GatherDataService {
 
-    @GET("/")
-    fun getIP(): Call<GetIPResponse>
+    @POST("/gather")
+    fun sendData(request: GatherDataRequest): Call<GatherDataResponse>
 }

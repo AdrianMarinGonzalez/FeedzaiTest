@@ -1,4 +1,4 @@
-package com.example.data.base
+package com.example.data.network.base
 
 import com.example.domain.base.Failure
 import com.example.domain.base.OperationResult
@@ -24,8 +24,12 @@ open class NetworkDatasource {
     }
     
     fun mapNetworkError(exception: NetworkException): NetworkError = when (exception) {
-        is NetworkException.InternalServerError -> NetworkError.InternalServerError(exception.localizedMessage ?: "")
-        is NetworkException.ServiceUnavailable -> NetworkError.ServiceUnavailable(exception.localizedMessage ?: "")
+        is NetworkException.InternalServerError -> NetworkError.InternalServerError(
+            exception.localizedMessage ?: ""
+        )
+        is NetworkException.ServiceUnavailable -> NetworkError.ServiceUnavailable(
+            exception.localizedMessage ?: ""
+        )
         is NetworkException.NotFound -> NetworkError.NotFound(exception.localizedMessage ?: "")
         is NetworkException.BadRequest -> NetworkError.BadRequest(exception.localizedMessage ?: "")
         is NetworkException.TimeOut -> NetworkError.TimeOut(exception.localizedMessage ?: "")

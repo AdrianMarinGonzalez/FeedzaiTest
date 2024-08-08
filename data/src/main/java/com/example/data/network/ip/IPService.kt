@@ -1,13 +1,11 @@
-package com.example.data.item.network
+package com.example.data.network.ip
 
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
 
 
-interface ItemService {
+interface IPService {
 
-    @GET("/mondly_android_code_task_json")
-    fun getItems(): Call<GetItemsResponse>
+    @GET("/")
+    fun getIP(): Call<GetIPResponse>
 }

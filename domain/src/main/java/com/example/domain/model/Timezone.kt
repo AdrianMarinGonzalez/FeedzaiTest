@@ -1,3 +1,3 @@
-package com.example.domain.base
+package com.example.domain.model
 
-data class Timezone(val key: String)
+data class Timezone(val key: String = "N/A")

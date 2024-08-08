@@ -1,6 +1,6 @@
-package com.example.data.network.ip
+package com.example.data.network.gathering
 
 
-data class GetIPResponse(
+data class GatherDataResponse(
     var ip: String
 )

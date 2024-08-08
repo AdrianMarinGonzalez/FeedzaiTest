@@ -1,9 +1,10 @@
-package com.example.domain
+package com.example.domain.repository
 
+import com.example.domain.base.Error
 import com.example.domain.base.OperationResult
-import com.example.domain.models.Location
+import com.example.domain.model.Location
 
 
 interface LocationRepository {
-    fun getCurrentLocation(): OperationResult<Location, Error>
+    fun getUserLocation(): OperationResult<Location, Error>
 }

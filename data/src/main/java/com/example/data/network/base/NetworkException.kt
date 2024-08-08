@@ -1,4 +1,4 @@
-package com.example.data.base
+package com.example.data.network.base
 
 
 sealed class NetworkException(val code: Int, message: String?) : Exception(message) {

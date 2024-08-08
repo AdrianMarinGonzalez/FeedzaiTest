@@ -1,4 +1,4 @@
-package com.example.data.base
+package com.example.data.network.base
 
 
 sealed class NetworkError(val code: Int, val message: String) {

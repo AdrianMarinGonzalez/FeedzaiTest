@@ -1,5 +1,9 @@
 package com.example.domain.repository
 
+import com.example.domain.base.Error
+import com.example.domain.base.OperationResult
 
-class DataProcessingRepository {
+
+interface DataProcessingRepository {
+    fun sendData(): OperationResult<Boolean, Error>
 }

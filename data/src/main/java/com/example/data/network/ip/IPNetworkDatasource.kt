@@ -1,14 +1,8 @@
 package com.example.data.network.ip
 
-import com.example.data.base.NetworkDatasource
-import com.example.data.item.network.IPService
+import com.example.data.network.base.NetworkDatasource
 
 
-class ItemNetworkDatasource constructor(private val service: IPService): NetworkDatasource() {
-
-    fun getItems() =
-        executeCall(
-            service.getItems()
-        )
-
+class IPNetworkDatasource constructor(private val service: IPService) : NetworkDatasource() {
+    fun getIP() = executeCall(service.getIP())
 }

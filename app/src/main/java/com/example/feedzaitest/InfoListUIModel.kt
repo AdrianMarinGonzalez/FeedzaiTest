@@ -1,11 +1,11 @@
-package com.example.presentation.item.models
+package com.example.feedzaitest
 
 
-sealed class ItemListUIModel {
-    data object Loading : ItemListUIModel()
-    data class Content(val items: List<ItemListItem> = emptyList()) :
-        ItemListUIModel()
+sealed class InfoListUIModel {
+    data object Loading : InfoListUIModel()
+    data class Content(val items: List<InfoListItemModel> = emptyList()) :
+        InfoListUIModel()
 
-    data object NotFoundError : ItemListUIModel()
-    data class ItemListItem(val id: String, val title: String, val iconURL: String)
+    data object NotFoundError : InfoListUIModel()
+    data class InfoListItemModel(val key: String, val value: String)
 }

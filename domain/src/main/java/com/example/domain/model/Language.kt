@@ -1,3 +1,3 @@
-package com.example.domain.models
+package com.example.domain.model
 
-data class Language(val iso2: String, val country: String)
+data class Language(val iso: String)

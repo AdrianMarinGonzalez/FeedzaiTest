@@ -1,11 +1,11 @@
-package com.example.domain
+package com.example.domain.repository
 
 import com.example.domain.base.OperationResult
-import com.example.domain.base.Timezone
-import com.example.domain.models.Language
+import com.example.domain.model.Timezone
+import com.example.domain.model.Language
 
 
 interface DeviceInfoRepository {
-    fun getLanguage(): OperationResult<Language, Error>
-    fun getTimezone(): OperationResult<Timezone, Error>
+    fun getLanguage(): Language
+    fun getTimezone(): Timezone
 }

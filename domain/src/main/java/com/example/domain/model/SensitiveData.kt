@@ -1,5 +1,8 @@
 package com.example.domain.model
 
 
-class SensitiveData {
-}
+data class SensitiveData(
+    val deviceInfo: DeviceInfo,
+    val networkInfo: NetworkInfo,
+    val location: Location
+)

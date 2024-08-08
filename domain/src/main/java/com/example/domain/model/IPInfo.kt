@@ -1,6 +1,3 @@
-package com.example.domain.models
+package com.example.domain.model
 
-sealed class IPInfo {
-    data class PublicIP(val ip: String): IPInfo()
-    data class PrivateIP(val ip: String): IPInfo()
-}
+data class IPInfo(val ip: String = "")

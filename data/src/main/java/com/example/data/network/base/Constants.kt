@@ -1,4 +1,4 @@
-package com.example.feedzaitest
+package com.example.data.network.base
 
 import java.net.URLEncoder
 import javax.crypto.spec.SecretKeySpec
