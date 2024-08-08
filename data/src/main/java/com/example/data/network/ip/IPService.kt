@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface IPService {
 
-    @GET("/")
+    @GET("/?format=json")
     fun getIP(): Call<GetIPResponse>
 }

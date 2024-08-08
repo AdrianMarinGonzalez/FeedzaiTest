@@ -5,6 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.GetDeviceInfoUseCase
 import com.example.domain.GetGeolocationInfoUseCase
 import com.example.domain.GetNetworkInfoUseCase
+import com.example.domain.SendDataUseCase
+import com.example.domain.base.get
+import com.example.domain.base.mapFailure
+import com.example.domain.model.DeviceInfo
+import com.example.domain.model.Location
+import com.example.domain.model.NetworkInfo
+import com.example.domain.model.SensitiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,6 +23,7 @@ class InfoListViewModel constructor(
     private val getNetworkInfoUseCase: GetNetworkInfoUseCase,
     private val getDeviceInfoUseCase: GetDeviceInfoUseCase,
     private val getGeolocationInfoUseCase: GetGeolocationInfoUseCase,
+    private val sendDataUseCase: SendDataUseCase,
     private val itemListUIModelMapper: InfoListLayoutModelMapper
 ) : ViewModel() {
 
@@ -24,7 +32,13 @@ class InfoListViewModel constructor(
 
     fun getItems() {
         viewModelScope.launch(Dispatchers.IO) {
-            getNetworkInfoUseCase.getNetworkInfo()
+            val networkInfo = getNetworkInfoUseCase.getNetworkInfo().mapFailure { NetworkInfo() }.get()
+            val deviceInfo = getDeviceInfoUseCase.getDeviceInfo().mapFailure { DeviceInfo() }.get()
+            val location = getGeolocationInfoUseCase.getGeolocationInfo().mapFailure { Location() }.get()
+
+            _items.value = itemListUIModelMapper.map(deviceInfo, networkInfo, location)
+
+            sendDataUseCase.sendData(SensitiveData(deviceInfo, networkInfo, location))
         }
     }
 }

@@ -6,6 +6,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
+import com.example.feedzaitest.di.modules
 
 
 class FeedzaiApplication : Application() {
@@ -16,8 +17,10 @@ class FeedzaiApplication : Application() {
             androidLogger()
             androidContext(this@FeedzaiApplication)
             val dataModule = getModule(this@FeedzaiApplication)
+            val presentationModules = modules
             val allDependencies = mutableListOf<Module>()
             allDependencies += dataModule
+            allDependencies += presentationModules
             modules(allDependencies.toList())
         }
     }

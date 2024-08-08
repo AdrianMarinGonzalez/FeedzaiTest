@@ -28,9 +28,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 fun getModule(applicationContext: Context) = listOf(
     module {
         factory<HttpClient> { HttpClient() }
-        factory<OkHttpClient> { provideOkHttpClient(get()) }
+        factory<OkHttpClient> { provideSecureOkHttpClient(get()) }
 
-        factory<Retrofit>(named("FeedzaiAPI")) { provideFeedzaiAPIRetrofit() }
+        factory<Retrofit>(named("FeedzaiAPI")) { provideFeedzaiAPIRetrofit(get()) }
         factory<Retrofit>(named("IPResolver")) { provideIPResolverAPIRetrofit() }
 
         single<IPService> { provideIPService(get(named("IPResolver"))) }
@@ -49,13 +49,13 @@ fun getModule(applicationContext: Context) = listOf(
     }
 )
 
-private fun provideOkHttpClient(client: HttpClient): OkHttpClient =
+private fun provideSecureOkHttpClient(client: HttpClient): OkHttpClient =
     client.buildOKHttpClient()
 
-private fun provideFeedzaiAPIRetrofit(): Retrofit =
+private fun provideFeedzaiAPIRetrofit(okHttpClient: OkHttpClient): Retrofit =
     Retrofit.Builder()
         .baseUrl(feedzaiEndpoint)
-        .client(OkHttpClient())
+        .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .build()
 

@@ -9,5 +9,5 @@ import java.util.TimeZone
 
 class DeviceInfoRepositoryImpl : DeviceInfoRepository {
     override fun getLanguage() = Language(Locale.getDefault().toLanguageTag())
-    override fun getTimezone() = Timezone(TimeZone.getDefault().getDisplayName(Locale.getDefault()))
+    override fun getTimezone() = Timezone(TimeZone.getDefault().displayName)
 }

@@ -1,8 +1,10 @@
 package com.example.feedzaitest
 
 import com.example.domain.model.DeviceInfo
+import com.example.domain.model.Language
 import com.example.domain.model.Location
 import com.example.domain.model.NetworkInfo
+import com.example.domain.model.SensitiveData
 
 class InfoListLayoutModelMapper {
     fun map(deviceInfo: DeviceInfo, networkInfo: NetworkInfo, location: Location) =
@@ -16,7 +18,7 @@ class InfoListLayoutModelMapper {
                 InfoListUIModel.InfoListItemModel("Timezone", deviceInfo.timeZone.key),
                 InfoListUIModel.InfoListItemModel(
                     "Location",
-                    "latitude: ${location.latitude} \n latitude: ${location.longitude}"
+                    "[${location.latitude} , ${location.longitude}]"
                 ),
             )
         )
