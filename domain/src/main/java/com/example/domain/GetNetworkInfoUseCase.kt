@@ -11,7 +11,7 @@ import com.example.domain.repository.NetworkInfoRepository
 
 class GetNetworkInfoUseCase constructor(private val networkInfoRepository: NetworkInfoRepository) {
 
-    fun getNetworkInfo(): OperationResult<NetworkInfo, Error> {
+    fun execute(): OperationResult<NetworkInfo, Error> {
         val publicIP = networkInfoRepository.getPublicIP().mapFailure { IPInfo() }.get()
         val localIP = networkInfoRepository.getLocalIP().mapFailure { IPInfo() }.get()
         val userAgent = networkInfoRepository.getDefaultUserAgent()

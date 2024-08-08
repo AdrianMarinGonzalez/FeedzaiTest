@@ -32,9 +32,9 @@ class InfoListViewModel constructor(
 
     fun getItems() {
         viewModelScope.launch(Dispatchers.IO) {
-            val networkInfo = getNetworkInfoUseCase.getNetworkInfo().mapFailure { NetworkInfo() }.get()
-            val deviceInfo = getDeviceInfoUseCase.getDeviceInfo().mapFailure { DeviceInfo() }.get()
-            val location = getGeolocationInfoUseCase.getGeolocationInfo().mapFailure { Location() }.get()
+            val networkInfo = getNetworkInfoUseCase.execute().mapFailure { NetworkInfo() }.get()
+            val deviceInfo = getDeviceInfoUseCase.execute().mapFailure { DeviceInfo() }.get()
+            val location = getGeolocationInfoUseCase.execute().mapFailure { Location() }.get()
 
             _items.value = itemListUIModelMapper.map(deviceInfo, networkInfo, location)
 

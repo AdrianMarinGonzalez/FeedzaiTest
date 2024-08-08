@@ -8,7 +8,7 @@ import com.example.domain.repository.LocationRepository
 
 class GetGeolocationInfoUseCase constructor(private val locationRepository: LocationRepository) {
 
-    fun getGeolocationInfo(): OperationResult<Location, Error> {
+    fun execute(): OperationResult<Location, Error> {
         return locationRepository.getUserLocation()
     }
 }

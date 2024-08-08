@@ -7,7 +7,7 @@ import com.example.domain.repository.DeviceInfoRepository
 
 
 class GetDeviceInfoUseCase constructor(private val deviceInfoRepository: DeviceInfoRepository) {
-    fun getDeviceInfo(): OperationResult<DeviceInfo, Error> {
+    fun execute(): OperationResult<DeviceInfo, Error> {
         val timezone = deviceInfoRepository.getTimezone()
         val language = deviceInfoRepository.getLanguage()
         return Success(DeviceInfo(language, timezone))
